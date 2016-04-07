@@ -13,8 +13,7 @@
   []
   (apply str (rest (clojure.string/trim
                     (:out (sh
-                           "git" "describe" "--match" "v*.*"
-                           "--abbrev=4" "--dirty=**DIRTY**"))))))
+                           "git" "describe" "--match" "v*.*" "--abbrev=4"))))))
 
 (defn get-git-ref
   []

@@ -3,6 +3,6 @@
   (:use [clojure.test]
         [midje.sweet]))
 
-(facts
+(future-facts
   (re-find #"1.0.0" (get-git-version)) => "1.0.0")
 

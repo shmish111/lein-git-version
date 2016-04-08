@@ -17,9 +17,9 @@
 
 (defn get-git-ref
   []
-  (apply str (rest (clojure.string/trim
-                    (:out (sh
-                           "git" "rev-parse" "--verify" "HEAD"))))))
+  (apply str (clojure.string/trim
+               (:out (sh
+                       "git" "rev-parse" "--verify" "HEAD")))))
 
 (defn git-version
   "Show project version, as tagged in git."

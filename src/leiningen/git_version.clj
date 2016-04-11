@@ -21,6 +21,12 @@
                (:out (sh
                        "git" "rev-parse" "--verify" "HEAD")))))
 
+(defn get-git-last-message
+  []
+  (apply str (clojure.string/trim
+               (:out (sh
+                       "git" "log" "-1" "HEAD")))))
+
 (defn git-version
   "Show project version, as tagged in git."
   ^{:doc "Show git project version"}

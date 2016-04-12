@@ -31,4 +31,4 @@
   "Show project version, as tagged in git."
   ^{:doc "Show git project version"}
   [project & args]
-  (println (get-git-version)))
+  (println "Version:" (:version project) "\n" (get-git-last-message)))

@@ -5,15 +5,16 @@
             [leiningen.core.main]
             [leiningen.core.project]
             [robert.hooke]
-            [leiningen.test])
+            [leiningen.test]
+            [clojure.string :as s])
   (:use
-   [clojure.java.shell :only [sh]]))
+    [clojure.java.shell :only [sh]]))
 
 (defn get-git-version
   []
   (apply str (rest (clojure.string/trim
-                    (:out (sh
-                           "git" "describe" "--match" "v*.*" "--abbrev=0"))))))
+                     (:out (sh
+                             "git" "describe" "--match" "v*.*" "--abbrev=0"))))))
 
 (defn get-git-ref
   []
@@ -23,9 +24,10 @@
 
 (defn get-git-last-message
   []
-  (apply str (clojure.string/trim
-               (:out (sh
-                       "git" "log" "-1" "HEAD")))))
+  (s/replace (apply str (clojure.string/trim
+                          (:out (sh
+                                  "git" "log" "-1" "HEAD"))))
+             #"\"" "'"))
 
 (defn git-version
   "Show project version, as tagged in git."

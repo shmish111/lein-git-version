@@ -8,25 +8,25 @@
             [leiningen.test]
             [clojure.string :as s])
   (:use
-    [clojure.java.shell :only [sh]]))
+   [clojure.java.shell :only [sh]]))
 
 (defn get-git-version
   []
   (apply str (rest (clojure.string/trim
-                     (:out (sh
-                             "git" "describe" "--match" "v*.*" "--abbrev=0"))))))
+                    (:out (sh
+                           "git" "describe" "--match" "v*.*" "--abbrev=0"))))))
 
 (defn get-git-ref
   []
   (apply str (clojure.string/trim
-               (:out (sh
-                       "git" "rev-parse" "--verify" "HEAD")))))
+              (:out (sh
+                     "git" "rev-parse" "--verify" "HEAD")))))
 
 (defn get-git-last-message
   []
   (s/replace (apply str (clojure.string/trim
-                          (:out (sh
-                                  "git" "log" "-1" "HEAD"))))
+                         (:out (sh
+                                "git" "log" "-1" "HEAD"))))
              #"\"" "'"))
 
 (defn git-version

@@ -1,8 +1,10 @@
 (ns leiningen.test.git-version
-  (:use leiningen.git-version)
-  (:use [clojure.test]
-        [midje.sweet]))
+  (:require [leiningen.git-version :refer :all]
+            [clojure.test :refer :all]
+            [midje.sweet :refer :all]))
 
-(future-facts
-  (re-find #"1.0.0" (get-git-version)) => "1.0.0")
-
+(deftest git-version-facts
+  (facts
+   (get-git-version) => "1.0.5"
+   (count (get-git-ref)) => 40
+   (re-matcher #"commit.*\nAuthor.*\nDate.*" (get-git-last-message)) => truthy))

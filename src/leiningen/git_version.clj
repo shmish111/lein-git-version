@@ -10,12 +10,6 @@
   (:use
    [clojure.java.shell :only [sh]]))
 
-(defn get-git-version
-  []
-  (apply str (rest (clojure.string/trim
-                    (:out (sh
-                           "git" "describe" "--match" "v*.*" "--abbrev=0"))))))
-
 (defn get-git-ref
   []
   (apply str (clojure.string/trim

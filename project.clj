@@ -1,4 +1,4 @@
-(defproject shmish111/lein-git-version "1.0.13"
+(defproject shmish111/lein-git-version "1.0.14"
   :description "Use git for project versions"
   :url "https://github.com/shmish111/lein-git-version"
   :license {:name "Eclipse Public License"
@@ -9,5 +9,5 @@
 
   :plugins [[lein-cljfmt "0.3.0"]
             [lein-midje "2.0.0-SNAPSHOT"]
-            [lein-ancient "0.6.7"]]
+            [lein-ancient "0.6.8" :exclusions [org.clojure/clojure]]]
   :profiles {:dev {:dependencies [[midje "1.8.3"]]}})

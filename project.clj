@@ -9,5 +9,5 @@
 
   :plugins [[lein-cljfmt "0.3.0"]
             [lein-midje "2.0.0-SNAPSHOT"]
-            [lein-ancient "0.6.7"]]
+            [lein-ancient "0.6.8" :exclusions [org.clojure/clojure]]]
   :profiles {:dev {:dependencies [[midje "1.8.3"]]}})

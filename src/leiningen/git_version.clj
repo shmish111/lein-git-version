@@ -23,6 +23,11 @@
                                 "git" "log" "-1" "HEAD"))))
              #"\"" "'"))
 
+(defn get-git-ts
+  []
+  (-> (sh "git" "log" "-1" "--pretty=%ct")
+      :out clojure.string/trim))
+
 (defn git-version
   "Show project version, as tagged in git."
   ^{:doc "Show git project version"}

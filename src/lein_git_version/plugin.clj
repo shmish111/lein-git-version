@@ -24,8 +24,8 @@
                   "(def gitmsg \"" (get-git-last-message) "\")\n")
         proj-dir (.toLowerCase (.replace (:name project) \- \_))
         filename (if (:git-version-path project)
-                   (str (:git-version-path project) "/version.clj")
+                   (str (:git-version-path project) "/version.cljc")
                    (str (or (first (:source-paths project)) "src") "/"
-                        proj-dir "/version.clj"))]
+                        proj-dir "/version.cljc"))]
     (spit filename code)
     project))

@@ -2,7 +2,7 @@
   (:require
    [clojure.pprint]
    [clojure.string :as str]
-   [leiningen.git-version :refer [get-git-ref get-git-last-message]])
+   [leiningen.git-version :refer [get-git-ref get-git-last-message] :as gv])
   (:import (java.io File)
            (java.util.regex Pattern)))
 
@@ -18,13 +18,14 @@
                                (str/replace (re-pattern (str "^" fsp "src" fsp)) "")
                                (str/replace fs "."))
                            (:name project)) ".version)\n"
+                  "(def timestamp " (gv/get-git-ts) ")\n"
                   "(def version \"" (:version project) "\")\n"
                   "(def gitref \"" (get-git-ref) "\")\n"
                   "(def gitmsg \"" (get-git-last-message) "\")\n")
         proj-dir (.toLowerCase (.replace (:name project) \- \_))
         filename (if (:git-version-path project)
-                   (str (:git-version-path project) "/version.clj")
+                   (str (:git-version-path project) "/version.cljc")
                    (str (or (first (:source-paths project)) "src") "/"
-                        proj-dir "/version.clj"))]
+                        proj-dir "/version.cljc"))]
     (spit filename code)
     project))

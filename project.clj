@@ -1,4 +1,4 @@
-(defproject shmish111/lein-git-version "1.0.15-SNAPSHOT"
+(defproject shmish111/lein-git-version "1.0.15"
   :description "Use git for project versions"
   :url "https://github.com/shmish111/lein-git-version"
   :license {:name "Eclipse Public License"

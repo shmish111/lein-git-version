@@ -9,10 +9,11 @@ your artifacts.
 
 > If your project is not using the scheme above, you can change the folder for
 > the `version.clj` file by setting `:git-version-path` in your `project.clj`
-> file. Example:
+> file and the `version` namespace by setting `:git-version-root-ns`. Example:
 >
 > ```
-> :git-version-path "src/prefix/my-project"
+> :git-version-path "src/clj/my-project"
+> :git-version-root-ns "my-project"
 > ```
 
 ## Usage
